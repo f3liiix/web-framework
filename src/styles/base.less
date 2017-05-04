@@ -1,0 +1,51 @@
+//
+// Base
+// @desc: 初始化样式
+// ---------------------------------------------------------------------------
+
+*,
+*:before,
+*:after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { font-size: 62.5%; }
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    font-family: @font-family;
+    font-size: @default-font-size;
+    color: @default-font-color;
+    line-height: @default-line-height;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+/**
+ * 1. 去除 IE6-9 和 Firefox 3 中 a 内部 img 元素默认的边框
+ * 2. 修正 IE8 图片消失bug
+ * 3. 防止 img 指定「height」时图片高度不能按照宽度等比缩放，导致图片变形
+      http://jsbin.com/aJoTUca/2
+ * 4. 让图片支持响应式
+ * 5. 去除现代浏览器图片底部的空隙
+ */
+img {
+    border: 0 none; /* 1 */
+    width: auto\9; /* 2 */
+    height: auto; /* 3 */
+    max-width: 100%; /* 4 */
+    vertical-align: top; /* 5 */
+}
+
+ul,
+ol,
+menu { list-style: none; }
+
+input,
+textarea,
+select { -webkit-font-smoothing: antialiased; }
+
+a { color: @default-font-color; text-decoration: none; }
+b,
+i,
+em { font-weight: normal; font-style: normal; }

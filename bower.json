@@ -1,0 +1,30 @@
+{
+    "name": "site",
+    "version": "1.2.0",
+    "description": "Web Front-End Framework",
+    "author": {
+        "name": "Hoofei",
+        "email": "hoofei@gmail.com",
+        "url": "http://hoofei.com"
+    },
+    "license": "MIT",
+    "homepage": "http://hoofei.com/",
+    "dependencies": {
+        "jquery": "~1.12.4"
+    },
+    "devDependencies": {
+        "html5shiv": "~3.7.3",
+        "fontawesome": "~4.7.0"
+    },
+    "main": [
+        "dist/**/*"
+    ],
+    "ignore": [
+        "/.*",
+        "_config.yml",
+        "CNAME",
+        "*.md",
+        "gulpfile.js",
+        "package.json"
+    ]
+}

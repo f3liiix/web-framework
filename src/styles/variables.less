@@ -1,0 +1,287 @@
+//
+// Global variables
+// 全局变量
+// ---------------------------------------------------------------------------
+
+
+// ===========================================================================
+//   Common
+// ===========================================================================
+
+
+// 基本设置 Base Setting
+// --------------------------------------------
+@ns: ~"af-";
+//** 圆角 Radius
+@border-radius-circle:      999em;
+@border-radius-base:        4px;
+@border-radius-large:       6px;
+@border-radius-small:       3px;
+//** 颜色 color
+@black:                     #000000;
+@white:                     #ffffff;
+@grey-darker:               lighten(@black, 13.5%); // #222
+@grey-dark:                 lighten(@black, 20%);   // #333
+@grey:                      lighten(@black, 33.5%); // #555
+@grey-light:                lighten(@black, 46.7%); // #777
+@grey-lighter:              lighten(@black, 93.5%); // #eee
+//** Material Design Colors (http://www.materialui.co/colors)
+@red:                       #f44336;
+@pink:                      #e91e63;
+@purple:                    #9c27b0;
+@deeppurple:                #673ab7;
+@indigo:                    #3f51b5;
+@blue:                      #2196f3;
+@lightblue:                 #03a9f4;
+@deepblue:                  #2c3e50;
+@cyan:                      #00bcd4;
+@teal:                      #009688;
+@green:                     #4caf50;
+@lightgreen:                #8bc34a;
+@lime:                      #cddc39;
+@yellow:                    #ffeb3b;
+@amber:                     #ffc107;
+@orange:                    #ff9800;
+@deeporange:                #ff5722;
+@brown:                     #795548;
+@bluegrey:                  #607d8b;
+//** 其他 Other
+@shardow-normal:            0 1px 6px rgba(0,0,0,.12);
+
+
+// 文字设置 Font
+// --------------------------------------------
+@font-family: "Segoe UI", Helvetica, Tahoma, "PingFang SC", "Microsoft YaHei", FreeSans, "Droid Sans", "wenquanyi micro hei", "Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+@default-font-color:        @grey-dark;
+@default-font-size:         14px;             // 14px
+@default-line-height:       1.428571429;      // @see bootstrap
+@line-height-large:         1.3333333;        // extra decimals for Win 8.1 Chrome
+@line-height-small:         1.5;
+@line-height-computed:      floor((@default-font-size * @default-line-height)); // ~20px
+@head-font-size:            18px;             // 主导航文字
+@title-font-size:           16px;             // 标题文字
+@content-font-size:         14px;             // 内容文字
+@form-base-font-size:       14px;             // 表单文字
+@description-font-size:     12px;             // 描述文字
+@badge-font-size:           12px;             // 徽标文字
+
+
+// 媒体查询 Media Queries
+// --------------------------------------------
+// 手机
+@screen-xs:                 480px;
+@screen-xs-min:             @screen-xs;
+@screen-phone:              @screen-xs-min;
+// 平板
+@screen-sm:                 768px;
+@screen-sm-min:             @screen-sm;
+@screen-tablet:             @screen-sm-min;
+// 电脑
+@screen-md:                 992px;
+@screen-md-min:             @screen-md;
+@screen-desktop:            @screen-md-min;
+// 大屏
+@screen-lg:                 1200px;
+@screen-lg-min:             @screen-lg;
+@screen-lg-desktop:         @screen-lg-min;
+// 媒体查询最大值
+@screen-xs-max:             (@screen-sm-min - 1);
+@screen-sm-max:             (@screen-md-min - 1);
+@screen-md-max:             (@screen-lg-min - 1);
+
+
+// 栅格 Grid
+// --------------------------------------------
+@grid-columns:              12;
+@grid-gutter-width:         20px;
+// 导航栏伸缩
+//** 临界点 - 导航栏开始展开
+@grid-float-breakpoint:     @screen-sm-min;
+//** 临界点 - 导航栏开始收缩
+@grid-float-breakpoint-max: (@grid-float-breakpoint - 1);
+
+
+// 容器 Container
+// --------------------------------------------
+//## 定义不同屏幕尺寸下 `.container` 容器的最大宽度
+// 手机/平板
+@container-tablet:          (720px + @grid-gutter-width);
+@container-sm:              @container-tablet;
+// 电脑
+@container-desktop:         (940px + @grid-gutter-width);
+@container-md:              @container-desktop;
+// 大屏
+@container-large-desktop:   (1140px + @grid-gutter-width);
+@container-lg:              @container-large-desktop;
+
+
+// ===========================================================================
+//   CSS
+// ===========================================================================
+
+
+// 按钮 Button
+// --------------------------------------------
+@btn-border-radius:         @border-radius-base;
+//** normal                 (btn height = 6*2 + 20 + 2 = 34px)
+@btn-padding-base-v:        6px;
+@btn-padding-base-h:        12px;
+//** large
+@btn-padding-large-v:       12px;
+@btn-padding-large-h:       20px;
+@btn-font-size-large:       20px;
+//** small
+@btn-padding-small-v:       5px;
+@btn-padding-small-h:       10px;
+@btn-font-size-small:       14px;
+//** mini
+@btn-padding-mini-v:        3px;
+@btn-padding-mini-h:        8px;
+@btn-font-size-mini:        12px;
+
+
+// 表单 Form
+// --------------------------------------------
+//** `<input>` background color
+@input-bg:                  #fff;
+//** `<input disabled>` background color
+@input-bg-disabled:         @grey-lighter;
+//** Text color for `<input>`s
+@input-color:               @grey;
+//** `<input>` border color
+@input-border:              #ccc;
+//** Default `.form-control` border radius
+// This has no effect on `<select>`s in some browsers, due to the limited stylability of `<select>`s in CSS.
+@input-border-radius:       @border-radius-base;
+//** Large `.form-control` border radius
+@input-border-radius-large: @border-radius-large;
+//** Small `.form-control` border radius
+@input-border-radius-small: @border-radius-small;
+//** Border color for inputs on focus
+@input-border-focus:        #66afe9;
+//** Placeholder text color
+@input-color-placeholder:   #999;
+//** Default `.form-control` height
+@input-height-base:         (@line-height-computed + (@padding-base-vertical * 2) + 2);
+//** Large `.form-control` height
+@input-height-large:        (ceil(@head-font-size * @line-height-large) + (@padding-large-vertical * 2) + 2);
+//** Small `.form-control` height
+@input-height-small:        (floor(@description-font-size * @line-height-small) + (@padding-small-vertical * 2) + 2);
+//** `.form-group` margin
+@form-group-margin-bottom:  15px;
+@legend-color:              @grey-dark;
+@legend-border-color:       #e5e5e5;
+//** Background color for textual input addons
+@input-group-addon-bg:      @grey-lighter;
+//** Border color for textual input addons
+@input-group-addon-border-color: @input-border;
+//** Disabled cursor for form controls and buttons.
+@cursor-disabled:           not-allowed;
+
+//** Form states and alerts
+@state-success-text:        darken(@green, 10%);
+@state-success-bg:          @green;
+@state-success-border:      darken(spin(@state-success-bg, -10), 5%);
+@state-info-text:           darken(@blue, 10%);
+@state-info-bg:             @blue;
+@state-info-border:         darken(spin(@state-info-bg, -10), 7%);
+@state-warning-text:        darken(@orange, 10%);
+@state-warning-bg:          @orange;
+@state-warning-border:      darken(spin(@state-warning-bg, -10), 5%);
+@state-danger-text:         darken(@red, 10%);
+@state-danger-bg:           @red;
+@state-danger-border:       darken(spin(@state-danger-bg, -10), 5%);
+
+
+// ===========================================================================
+//   Components
+// ===========================================================================
+
+// 通用 Common
+// --------------------------------------------
+@padding-base-vertical:     6px;
+@padding-base-horizontal:   12px;
+@padding-large-vertical:    10px;
+@padding-large-horizontal:  16px;
+@padding-small-vertical:    5px;
+@padding-small-horizontal:  10px;
+@padding-xs-vertical:       1px;
+@padding-xs-horizontal:     5px;
+
+
+// 徽章 Badge
+// --------------------------------------------
+@badge-border-radius:       10px;
+@badge-padding:             3px 7px;
+@badge-black:               #444444;
+@badge-blue:                #009bd8;
+@badge-green:               #6eb82c;
+@badge-grey:                #a9a7a7;
+@badge-red:                 #e34541;
+@badge-orange:              #faa800;
+
+
+// 列表 List
+// --------------------------------------------
+@list-font-size:            @content-font-size;
+//@list-icon-width:         60px;
+//@list-icon-height:        60px;
+@list-padding:              12px;       // 不能使用 top right bottom left 格式
+@list-line-height:          1.4;
+@list-badge-pos-top:        -5px;
+@list-badge-pos-left:       -5px;
+@list-overlay-zindex:       11;
+@list-inside-space:         .5em;
+@list-multi-border-color:   #e5e5e5;
+@list-tile-padding:         10px 5px;
+
+
+// 画廊 Gallery
+// --------------------------------------------
+@gallery-space:             3px;
+@gallery-title-font-size:   1.4em;
+@gallery-title-font-desc:   1.4em;
+@gallery-overlay-title-bg:  rgba(0,0,0,.6);
+@gallery-overlay-title-color:@white;
+@gallery-item-min-height:   100px;
+
+
+// 字体图标 Icon
+// --------------------------------------------
+@icon-font-family:          "FontAwesome";
+@icon-font-path:            "../fonts/";
+@icon-font-name:            "fontawesome-webfont";
+@icon-x2-size:              2em;
+@icon-x3-size:              2.7em;
+@icon-x4-size:              4em;
+@icon-x5-size:              5em;
+
+
+// =============================================================================
+//   Plugins
+// =============================================================================
+
+
+// Dropdown
+// --------------------------------------------
+@dropdown-content-bg:       @white;
+@dropdown-content-radius:   @border-radius-base;
+@dropdown-border-color:     #e5e5e5;
+@dropdown-hover:            #efefef;
+@dropdown-index:            100;
+@dropdown-content-padding:  7px 10px;
+@dropdown-min-width:        100px;
+
+
+// Loadmore
+// --------------------------------------------
+@loadmore-lin-height:       @default-line-height;
+@loadmore-padding:          8px;
+
+
+// Modal
+// --------------------------------------------
+@modal-bg:                  @white;
+@modal-radius:              @border-radius-base;    // 不能使用 top right bottom left 格式
+@modal-border-color:        #d7d7d7;
+@modal-btn-padding:         8px;

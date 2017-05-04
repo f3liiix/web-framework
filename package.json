@@ -1,0 +1,30 @@
+{
+    "name": "site",
+    "version": "1.2.0",
+    "private": true,
+    "description": "Anfeng Web Front-End Framework",
+    "main": "gulpfile.js",
+    "devDependencies": {
+        "del": "^2.2.2",
+        "jshint": "^2.9.4",
+        "gulp": "3.9.1",
+        "gulp-autoprefixer": "^3.1.1",
+        "gulp-cache": "^0.4.6",
+        "gulp-clean-css": "^3.0.4",
+        "gulp-concat": "^2.6.1",
+        "gulp-footer": "^1.0.5",
+        "gulp-header": "^1.8.8",
+        "gulp-if": "^2.0.2",
+        "gulp-jshint": "^2.0.4",
+        "gulp-less": "^3.3.0",
+        "gulp-livereload": "^3.8.1",
+        "gulp-notify": "^3.0.0",
+        "gulp-plumber": "^1.1.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-replace": "^0.5.4",
+        "gulp-sourcemaps": "^2.5.1",
+        "gulp-uglify": "^2.1.2"
+    },
+    "author": "hoofei@gmail.com",
+    "license": "ISC"
+}

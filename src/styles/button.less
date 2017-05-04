@@ -1,0 +1,151 @@
+//
+// Button
+// @desc: 通用按钮，包括单体按钮、组合按钮。
+// ---------------------------------------------------------------------------
+
+.btn {
+    display: inline-block;
+    zoom: 1;
+    margin-bottom: 0; // For input.btn
+    line-height: @default-line-height;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none; // Reset unusual Firefox-on-Android default style; see https://github.com/necolas/normalize.css/issues/214
+    border: 1px solid transparent;
+    .button-size(@btn-padding-base-v; @btn-padding-base-h; @default-font-size; @border-radius-base);
+    user-select: none;
+    transition: all .15s ease;
+
+    &,
+    &:active,
+    &.active {
+        &:focus,
+        &.focus {
+            outline: 0;
+        }
+    }
+
+    &:hover,
+    &:focus,
+    &.focus {
+        color: @black;
+        text-decoration: none;
+    }
+
+    &:active,
+    &.active {
+        outline: 0;
+        background-image: none;
+        box-shadow: inset 0 2px 3px rgba(0,0,0,.1);
+    }
+
+    // disabled
+    // @desc: 禁用样式
+    // --------------------------------------------
+    &.disabled,
+    &[disabled],
+    fieldset[disabled] & {
+        cursor: not-allowed;
+        box-shadow: none;
+        .opacity(.6);
+    }
+
+    a& {
+        &.disabled,
+        fieldset[disabled] & {
+            pointer-events: none; // Future-proof disabling of clicks on `<a>` elements
+        }
+    }
+
+    // with icon
+    [class*=btn-icon] { display: inline-block; margin: (-@btn-padding-base-v - 1) @btn-padding-base-h; padding: (@btn-padding-base-v + 1) @btn-padding-base-h; line-height: @default-line-height; background-color: rgba(0,0,0,.08); }
+    .btn-icon-left { margin-left: (-@btn-padding-base-h - 1); border-top-left-radius: @border-radius-base; border-bottom-left-radius: @border-radius-base; }
+    .btn-icon-right { margin-right: (-@btn-padding-base-h - 1); border-top-right-radius: @border-radius-base; border-bottom-right-radius: @border-radius-base; }
+
+    // Size
+    // @desc: 按钮尺寸
+    // --------------------------------------------
+	&.btn-lg {
+        .button-size(@btn-padding-large-v; @btn-padding-large-h; @btn-font-size-large; @border-radius-base);
+        // with icon
+        [class*=btn-icon] { display: inline-block; margin: -@btn-padding-large-v @btn-padding-large-h; padding: @btn-padding-large-v @btn-padding-large-h; line-height: 1; background-color: rgba(0,0,0,.08); }
+        .btn-icon-left { margin-left: -@btn-padding-large-h; }
+        .btn-icon-right { margin-right: -@btn-padding-large-h; }
+    }
+	&.btn-sm {
+        .button-size(@btn-padding-small-v; @btn-padding-small-h; @btn-font-size-small; @border-radius-base);
+        // with icon
+        [class*=btn-icon] { display: inline-block; margin: -@btn-padding-small-v @btn-padding-small-h; padding: @btn-padding-small-v @btn-padding-small-h; line-height: 1; background-color: rgba(0,0,0,.08); }
+        .btn-icon-left { margin-left: -@btn-padding-small-h; }
+        .btn-icon-right { margin-right: -@btn-padding-small-h; }
+    }
+    &.btn-xs {
+        .button-size(@btn-padding-mini-v; @btn-padding-mini-h; @btn-font-size-mini; @border-radius-base);
+        // with icon
+        [class*=btn-icon] { display: inline-block; margin: -@btn-padding-mini-v @btn-padding-mini-h; padding: @btn-padding-mini-v @btn-padding-mini-h; line-height: 1; background-color: rgba(0,0,0,.08); }
+        .btn-icon-left { margin-left: -@btn-padding-mini-h; }
+        .btn-icon-right { margin-right: -@btn-padding-mini-h; }
+    }
+    &.btn-block {
+        display: block;
+        width: 100%;
+    }
+    &.btn-bold {
+        font-weight: 600;
+    }
+    &.circular {
+        border-radius: 10em;
+    }
+
+    // Specificity overrides
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+        &.btn-block {
+            width: 100%;
+        }
+    }
+
+    // Buttons
+    //
+    &.btn-default {
+        .button-variant(@grey-dark; @grey-lighter; darken(@grey-lighter,7%));
+    }
+    &.btn-primary {
+        .button-variant(@white; @blue; @blue);
+    }
+    &.btn-warning {
+        .button-variant(@white; @orange; @orange);
+    }
+    &.btn-danger {
+        .button-variant(@white; @red; @red);
+    }
+}
+
+
+// Button Group
+// @desc: 组合按钮
+// --------------------------------------------
+.btn-group {
+    overflow: hidden;
+    .active {
+        z-index: 1;  // 保证激活项目在最上层显示
+    }
+	& > .btn {
+        float: left; margin: 0; border-radius: 0; .text-hide-ellipsis(); border-width: 1px 0;
+        &:first-child { border-radius: @btn-border-radius 0 0 @btn-border-radius; border-left-width: 1px; }
+        &:last-child { border-radius: 0 @btn-border-radius @btn-border-radius 0; border-right-width: 1px; }
+	}
+    // 垂直布局
+	&.vertical {
+        & > .btn {
+            clear: both; border-width: 0 1px;
+            &:first-child { border-radius: @btn-border-radius @btn-border-radius 0 0; border-top-width: 1px; }
+            &:last-child { border-radius: 0 0 @btn-border-radius @btn-border-radius; border-bottom-width: 1px; }
+        }
+	}
+}

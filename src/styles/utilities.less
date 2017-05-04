@@ -1,0 +1,167 @@
+//
+// Utilities
+// 通用功能样式
+// ---------------------------------------------------------------------------
+
+// 浮动
+.@{ns}fl { float: left; }
+.@{ns}fr { float: right; }
+
+// 显示
+.hide { display: none; }
+.unvisible { visibility: hidden; }
+.clearfix { .clearfix(); }
+
+// 文字排版
+.@{ns}a-line { .text-hide(); }
+.@{ns}a-line-ellipsis { .text-hide-ellipsis(); }
+
+/*
+ *@ Name:       inline-block 组件
+ *@ Usage:      清除空隙需在外层容器加上 dib-box，dib 可单独使用
+ *@ Url:        http://thx.github.io/cube/doc/layout
+ */
+
+.dib {
+    display: inline-block;
+}
+
+.dib-box {
+    font-size: 0;
+}
+
+.dib-box .dib {
+    vertical-align: top;
+    font-size: @default-font-size;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: inherit;
+}
+
+/*
+ *@ Name:        自适应两端对齐组件
+ *@ Rely：       依赖 inline-block 解决方案
+ *@ Usage:       外层加上 justify，内部需要两端对齐的元素都加上 dib, dib 与 justify 不要同时出现
+ *@ Demo:        http://jsbin.com/OsEcOMA/1/
+ */
+
+/**
+ * 防止行高增大
+ * 尽量不要在父元素上设置行高
+ */
+
+.justify,
+.dib-box .justify {
+    font-size: 0;
+    line-height: inherit;
+}
+
+.justify {
+    text-align: justify;
+    text-justify: inter-ideograph;
+    -moz-text-align-last: justify;
+    text-align-last: justify; /* IE 8+ */
+}
+
+/**
+* 不支持 text-align-last 的浏览器用伪元素模拟
+* 1. margin-left:100% 仅 WebKit 支持
+*/
+.justify:after {
+    content: "";
+    display: inline-block;
+    width: 100%; /* 1 */
+}
+
+/* 子元素取消两端对齐 */
+.justify .dib {
+    -moz-text-align-last: auto;
+    text-align-last: auto;
+    text-justify: auto;
+    text-align: left;
+    font-size: @default-font-size;
+    letter-spacing: normal;
+    word-spacing: normal;
+}
+
+/*
+ *@ Name:       未知高度垂直居中组件
+ *@ Usage:      支持图片，单行或多行文字，以及图文混排
+ */
+
+/* 去除 inline-block 的空隙 */
+.center-box {
+    font-size: 0;
+    height: 100%; /* 继承父级高度 */
+}
+
+/* 使用空标签生成一个高度100%的参照元素 */
+.center-box .center-hack {
+    display: inline-block;
+    font-size: 0;
+    width: 0;
+    height: 100%;
+    vertical-align: middle;
+}
+
+.center-box .center-body {
+    letter-spacing: normal;
+    word-spacing: normal;
+    display: inline-block;
+    font-size: @default-font-size;
+    vertical-align: middle; /* 保证文字垂直居中 */
+    padding: 0 !important; /* 防止设置边距导致居中失效 */
+    margin: 0 !important;
+    width: 100%; /* 保证连续字符也能居中 */
+    white-space: normal; /* 保证连续字符换行 */
+    word-wrap: break-word;
+}
+
+.center-box .center-img {
+    display: inline-block;
+    width: 100%;
+    text-align: center; /* 图片默认水平居中 */
+    vertical-align: middle;
+    padding: 0 !important; /* 防止设置边距导致居中失效 */
+    margin: 0 !important;
+    font-size: 0;
+}
+
+.center-box img {
+    vertical-align: middle; /* 去除现代浏览器 img 底部空隙 */
+}
+
+/**
+ * 隐藏<select>元素的下拉箭头
+ * 1. 隐藏 WebKit 中的下拉箭头
+ * 2. Firefox 存在bug，该属性不完全生效，
+      https://bugzilla.mozilla.org/show_bug.cgi?id=649849
+ * 3. 实验数值，Firefox for Android text-indent 需要设置大于 5px
+ * @doc: https://gist.github.com/joaocunha/6273016
+ * @demo: http://jsbin.com/EdiZuvO/1/edit
+*/
+.select-no-appearance {
+    -webkit-appearance: none; /* 1 */
+    -moz-appearance: none; /* 2 */
+    text-overflow: ""; /* 3 */
+    text-indent: .01px; /* 3 */
+}
+
+/*
+ * 1. 防止 OS X 中 Webfont 视觉上看起来变粗
+ * 2. Fiefox 25 开始支持「-moz-osx-font-smoothing:auto(默认)|grayscale」
+ * Demo: http://jsbin.com/iWItiQe/2
+ */
+.antialiased {
+    -webkit-font-smoothing: antialiased; /* 1 */
+    -moz-osx-font-smoothing: grayscale; /* 2 */
+}
+
+/**
+ * 统一用双线显示人民币符号「&yen;(￥)」
+ */
+.rmb,
+.yuan {
+    font-family: arial, serif;
+    font-style: normal;
+}
